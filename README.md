@@ -4,7 +4,7 @@
 [![C#](https://img.shields.io/badge/C%23-14--Ready-239120)](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14)
 [![NuGet](https://img.shields.io/nuget/v/ElBruno.OllamaSharp.Extensions.svg)](https://www.nuget.org/packages/ElBruno.OllamaSharp.Extensions)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![CI Build](https://github.com/elbruno/a2aapiredemo/workflows/CI%20Build%20and%20Test/badge.svg)](https://github.com/elbruno/a2aapiredemo/actions)
+[![CI Build](https://github.com/elbruno/elbruno.OllamaSharp.Extensions/workflows/CI%20Build%20and%20Test/badge.svg)](https://github.com/elbruno/elbruno.OllamaSharp.Extensions/actions)
 
 > **C# 14-ready extension library for OllamaSharp that adds configurable timeout support to OllamaApiClient**
 
@@ -65,6 +65,13 @@ Or add to your `.csproj` file:
   <PackageReference Include="ElBruno.OllamaSharp.Extensions" Version="1.0.0" />
 </ItemGroup>
 ```
+
+### Download Links
+
+You can download the package from the following links:
+
+- [NuGet Package](https://www.nuget.org/packages/ElBruno.OllamaSharp.Extensions)
+- [Symbol Package](https://www.nuget.org/packages/ElBruno.OllamaSharp.Extensions/1.0.0/symbols)
 
 ```bash
 dotnet add reference path/to/OllamaSharpExtensions/OllamaSharpExtensions.csproj
@@ -221,7 +228,7 @@ The included test applicatiosn demonstrates all features of the extension librar
 
 ## 🤝 Contributing
 
-Contributions are welcome! This library is part of the [a2aapiredemo](https://github.com/elbruno/a2aapiredemo) repository.
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
@@ -235,7 +242,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/elbruno/a2aapiredemo/issues)
+- **Issues**: [GitHub Issues](https://github.com/elbruno/elbruno.OllamaSharp.Extensions/issues)
 - **Author**: [Bruno Capuano](https://github.com/elbruno)
 - **Blog**: [elbruno.com](https://www.elbruno.com)
 

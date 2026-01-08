@@ -14,6 +14,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - .NET 10 SDK (preview)
 - Git
 - Your favorite IDE (Visual Studio, VS Code, or Rider)
@@ -21,17 +22,20 @@ Thank you for your interest in contributing! This document provides guidelines f
 ### Setup Development Environment
 
 1. **Fork and Clone**
+
    ```bash
-   git fork https://github.com/elbruno/a2aapiredemo
-   cd a2aapiredemo/OllamaSharpExtensions
+   git fork https://github.com/elbruno/elbruno.OllamaSharp.Extensions
+   cd elbruno.OllamaSharp.Extensions
    ```
 
 2. **Build the Project**
+
    ```bash
    dotnet build ElBruno.OllamaSharp.Extensions.sln
    ```
 
 3. **Run Tests**
+
    ```bash
    dotnet test ElBruno.OllamaSharp.Extensions.Tests/ElBruno.OllamaSharp.Extensions.Tests.csproj
    ```
@@ -39,6 +43,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 ## 📝 Code Style Guidelines
 
 ### C# Coding Standards
+
 - Follow Microsoft's [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
 - Use C# 14 preview features where appropriate
 - Enable nullable reference types
@@ -46,6 +51,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 - Prefer `var` for local variables when type is obvious
 
 ### Naming Conventions
+
 - Classes: `PascalCase`
 - Methods: `PascalCase`
 - Parameters: `camelCase`
@@ -53,11 +59,13 @@ Thank you for your interest in contributing! This document provides guidelines f
 - Constants: `PascalCase`
 
 ### Documentation
+
 - Add XML documentation comments for all public APIs
 - Include `<summary>`, `<param>`, `<returns>`, and `<example>` tags
 - Provide meaningful examples in documentation
 
 Example:
+
 ```csharp
 /// <summary>
 /// Sets the timeout for the OllamaApiClient's underlying HttpClient.
@@ -80,6 +88,7 @@ public static OllamaApiClient SetTimeout(this OllamaApiClient client, TimeSpan t
 ## 🧪 Testing Guidelines
 
 ### Unit Tests
+
 - Write comprehensive unit tests for all new features
 - Use MSTest 4.0 framework
 - Follow Arrange-Act-Assert pattern
@@ -87,6 +96,7 @@ public static OllamaApiClient SetTimeout(this OllamaApiClient client, TimeSpan t
 - Include edge cases and boundary conditions
 
 ### Test Naming
+
 ```csharp
 [TestMethod]
 public void MethodName_Scenario_ExpectedBehavior()
@@ -96,6 +106,7 @@ public void MethodName_Scenario_ExpectedBehavior()
 ```
 
 Example:
+
 ```csharp
 [TestMethod]
 public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
@@ -113,6 +124,7 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
 ```
 
 ### Test Coverage
+
 - Aim for >80% code coverage
 - All public methods must have tests
 - Test null safety with `ArgumentNullException` tests
@@ -121,6 +133,7 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
 ## 📦 Pull Request Process
 
 ### Before Submitting
+
 1. Ensure all tests pass
 2. Add tests for new functionality
 3. Update documentation
@@ -128,7 +141,9 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
 5. Update CHANGELOG.md with your changes
 
 ### PR Guidelines
+
 1. **Create a feature branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -139,10 +154,11 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
    - Update documentation
 
 3. **Commit with meaningful messages**
+
    ```bash
    git commit -m "Add: Timeout retry policy extension"
    ```
-   
+
    Use prefixes:
    - `Add:` for new features
    - `Fix:` for bug fixes
@@ -151,11 +167,13 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
    - `Test:` for test-related changes
 
 4. **Push and create PR**
+
    ```bash
    git push origin feature/your-feature-name
    ```
 
 5. **PR Template**
+
    ```markdown
    ## Description
    Brief description of changes
@@ -181,6 +199,7 @@ public void SetTimeout_WithValidTimeout_SetsTimeoutSuccessfully()
 ## 🐛 Bug Reports
 
 ### Bug Report Template
+
 ```markdown
 **Describe the bug**
 A clear description of the bug
@@ -209,6 +228,7 @@ Any other relevant information
 ## 💡 Feature Requests
 
 ### Feature Request Template
+
 ```markdown
 **Is your feature request related to a problem?**
 Description of the problem
@@ -226,6 +246,7 @@ Any other relevant information
 ## 📚 Documentation Guidelines
 
 ### Documentation Structure
+
 - **README.md**: Overview and quick start
 - **QUICKSTART.md**: 5-minute getting started guide
 - **IMPLEMENTATION.md**: Technical deep-dive
@@ -234,6 +255,7 @@ Any other relevant information
 - **API docs**: XML comments in code
 
 ### Writing Style
+
 - Be clear and concise
 - Use code examples
 - Include prerequisites
@@ -243,6 +265,7 @@ Any other relevant information
 ## 🔒 Security
 
 ### Reporting Security Issues
+
 - **Do NOT** create public issues for security vulnerabilities
 - Email security concerns to: [security contact]
 - Include detailed reproduction steps
@@ -255,6 +278,7 @@ By contributing, you agree that your contributions will be licensed under the MI
 ## 🙏 Recognition
 
 Contributors will be recognized in:
+
 - CHANGELOG.md for each release
 - README.md contributors section (if added)
 - Release notes
@@ -265,12 +289,12 @@ Contributors will be recognized in:
 - Open an issue with the `question` label
 - Contact maintainer: Bruno Capuano
 
-## 🎉 Thank You!
+## 🎉 Thank You
 
 Your contributions make this project better for everyone!
 
 ---
 
 **Maintainer:** Bruno Capuano  
-**Repository:** https://github.com/elbruno/a2aapiredemo  
+**Repository:** <https://github.com/elbruno/elbruno.OllamaSharp.Extensions>  
 **License:** MIT

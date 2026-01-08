@@ -8,17 +8,17 @@
     
     <!-- NuGet Package Metadata -->
     <PackageId>ElBruno.OllamaSharp.Extensions</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Bruno Capuano</Authors>
     <Company>elbruno.com</Company>
     <Description>C# 14-ready extension library for OllamaSharp that adds configurable timeout support to OllamaApiClient. Provides fluent, builder pattern, and functional configuration styles for managing timeouts in long-running LLM inference operations.</Description>
     <PackageTags>ollama;ollamasharp;llm;ai;timeout;extensions;csharp14;dotnet10</PackageTags>
-    <PackageProjectUrl>https://github.com/elbruno/a2aapiredemo</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/elbruno/a2aapiredemo</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/elbruno/elbruno.OllamaSharp.Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/elbruno/elbruno.OllamaSharp.Extensions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Initial release: Configurable timeout support for OllamaApiClient with fluent, builder, and functional patterns. Includes WithQuickTimeout(), WithStandardTimeout(), WithLongTimeout(), WithExtendedTimeout() builder methods.</PackageReleaseNotes>
+    <PackageReleaseNotes>v1.0.1: Fixed repository URLs from old a2aapiredemo to correct elbruno.OllamaSharp.Extensions repository.</PackageReleaseNotes>
     <Copyright>Copyright (c) 2026 Bruno Capuano</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     
