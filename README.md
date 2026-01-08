@@ -66,31 +66,6 @@ Or add to your `.csproj` file:
 </ItemGroup>
 ```
 
-### Download Links
-
-You can download the package from the following links:
-
-- [NuGet Package](https://www.nuget.org/packages/ElBruno.OllamaSharp.Extensions)
-- [Symbol Package](https://www.nuget.org/packages/ElBruno.OllamaSharp.Extensions/1.0.0/symbols)
-
-```bash
-dotnet add reference path/to/OllamaSharpExtensions/OllamaSharpExtensions.csproj
-```
-
-### Package Reference (if published to NuGet)
-
-```bash
-dotnet add package OllamaSharpExtensions
-```
-
-Or add to your `.csproj` file:
-
-```xml
-<ItemGroup>
-  <PackageReference Include="OllamaSharpExtensions" Version="1.0.0" />
-</ItemGroup>
-```
-
 ## 🚀 Quick Start
 
 ```csharp
@@ -115,7 +90,7 @@ Console.WriteLine($"Current timeout: {timeout}");
 
 ```csharp
 using OllamaSharp;
-using OllamaSharpExtensions;
+using ElBruno.OllamaSharp.Extensions;
 
 // Quick queries (2 minutes)
 var quickClient = new OllamaApiClient(uri, model).WithQuickTimeout();
@@ -196,7 +171,7 @@ extension(OllamaApiClient client)
 using Microsoft.Agents.AI;
 using Microsoft.Extensions.AI;
 using OllamaSharp;
-using OllamaSharpExtensions;
+using ElBruno.OllamaSharp.Extensions;
 
 // Create and configure the OllamaApiClient
 var ollamaClient = new OllamaApiClient(new Uri("http://localhost:11434/"), "llama3.2")
