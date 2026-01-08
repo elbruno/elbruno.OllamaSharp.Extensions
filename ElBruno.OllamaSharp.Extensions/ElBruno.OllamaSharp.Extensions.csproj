@@ -8,7 +8,7 @@
     
     <!-- NuGet Package Metadata -->
     <PackageId>ElBruno.OllamaSharp.Extensions</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Bruno Capuano</Authors>
     <Company>elbruno.com</Company>
     <Description>C# 14-ready extension library for OllamaSharp that adds configurable timeout support to OllamaApiClient. Provides fluent, builder pattern, and functional configuration styles for managing timeouts in long-running LLM inference operations.</Description>
@@ -18,7 +18,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>v1.0.1: Fixed repository URLs from old a2aapiredemo to correct elbruno.OllamaSharp.Extensions repository.</PackageReleaseNotes>
+    <PackageReleaseNotes>v1.0.2: Fixed incorrect namespace references in README code samples from OllamaSharpExtensions to ElBruno.OllamaSharp.Extensions.</PackageReleaseNotes>
     <Copyright>Copyright (c) 2026 Bruno Capuano</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     
