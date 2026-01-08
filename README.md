@@ -46,24 +46,10 @@ This library was created to address [OllamaSharp Issue #173](https://github.com/
 
 ## 📦 Installation
 
-### NuGet Package (Recommended)
+### NuGet Package
 
 ```bash
 dotnet add package ElBruno.OllamaSharp.Extensions
-```
-
-Or using Package Manager Console:
-
-```powershell
-Install-Package ElBruno.OllamaSharp.Extensions
-```
-
-Or add to your `.csproj` file:
-
-```xml
-<ItemGroup>
-  <PackageReference Include="ElBruno.OllamaSharp.Extensions" Version="1.0.0" />
-</ItemGroup>
 ```
 
 ## 🚀 Quick Start
