@@ -34,8 +34,6 @@ This library was created to address [OllamaSharp Issue #173](https://github.com/
 
 ## ✨ Features
 
-- **C# 14-Ready Design**: Implements modern C# patterns ready for future extension member syntax
-- **Multiple Configuration Styles**: Support for fluent, builder, and functional patterns
 - **Simple Extension API**: Add timeout configuration with a single method call
 - **.NET 10 Compatible**: Built with the latest .NET features and C# preview language version
 - **Fluent Interface**: Method chaining support for clean configuration
@@ -44,7 +42,7 @@ This library was created to address [OllamaSharp Issue #173](https://github.com/
 - **Type-Safe**: Full compile-time type checking and IntelliSense support
 - **Microsoft Agent Framework Compatible**: Works seamlessly with `Microsoft.Agents.AI` and `Microsoft.Extensions.AI`
 - **Non-Breaking**: Uses extension methods, so existing code continues to work without modification
-- **Fully Tested**: 27 unit tests with 100% pass rate
+- **(Almost) Fully Tested**: 27 unit tests with 100% pass rate
 
 ## 📦 Installation
 
@@ -169,6 +167,7 @@ var client = new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2")
 This library is designed to embrace C# 14's extension members feature (when fully released). The current implementation uses C# 14-ready patterns that will seamlessly evolve to the new syntax:
 
 #### Current Implementation (C# 14-Ready)
+
 ```csharp
 public static class OllamaApiClientExtensions
 {
@@ -185,6 +184,7 @@ public static class OllamaApiClientExtensions
 ```
 
 #### Future C# 14 Extension Member Syntax (When Available)
+
 When C# 14's `extension` keyword becomes fully available, this can be simplified to:
 
 ```csharp
@@ -207,6 +207,7 @@ extension(OllamaApiClient client)
 ```
 
 **Benefits of the future syntax:**
+
 - More natural property access: `client.Timeout = TimeSpan.FromMinutes(5);`
 - Cleaner organization of related extension members
 - Better IDE support and discoverability
@@ -284,12 +285,14 @@ public static OllamaApiClient SetTimeout(this OllamaApiClient client, TimeSpan t
 ```
 
 **Parameters:**
+
 - `client`: The OllamaApiClient instance
 - `timeout`: The timeout duration (must be greater than zero)
 
 **Returns:** The same OllamaApiClient instance for method chaining
 
 **Throws:**
+
 - `ArgumentNullException`: If client is null
 - `ArgumentOutOfRangeException`: If timeout is zero or negative
 - `InvalidOperationException`: If unable to access the internal HttpClient
@@ -303,11 +306,13 @@ public static TimeSpan? GetTimeout(this OllamaApiClient client)
 ```
 
 **Parameters:**
+
 - `client`: The OllamaApiClient instance
 
 **Returns:** The current timeout duration, or null if unable to access it
 
 **Throws:**
+
 - `ArgumentNullException`: If client is null
 
 ##### `ConfigureTimeout(Func<TimeSpan?, TimeSpan> configure)`
@@ -321,17 +326,20 @@ public static OllamaApiClient ConfigureTimeout(
 ```
 
 **Parameters:**
+
 - `client`: The OllamaApiClient instance
 - `configure`: Configuration function that receives the current timeout and returns the new timeout
 
 **Returns:** The same OllamaApiClient instance for method chaining
 
 **Throws:**
+
 - `ArgumentNullException`: If client or configure is null
 
 #### Builder Pattern Methods (C# 14-Ready)
 
 ##### `WithQuickTimeout()`
+
 Sets a timeout suitable for quick queries (2 minutes).
 
 ```csharp
@@ -339,6 +347,7 @@ public static OllamaApiClient WithQuickTimeout(this OllamaApiClient client)
 ```
 
 ##### `WithStandardTimeout()`
+
 Sets a timeout suitable for standard prompts (5 minutes).
 
 ```csharp
@@ -346,6 +355,7 @@ public static OllamaApiClient WithStandardTimeout(this OllamaApiClient client)
 ```
 
 ##### `WithLongTimeout()`
+
 Sets a timeout suitable for long-form generation (10 minutes).
 
 ```csharp
@@ -353,6 +363,7 @@ public static OllamaApiClient WithLongTimeout(this OllamaApiClient client)
 ```
 
 ##### `WithExtendedTimeout()`
+
 Sets a timeout suitable for very large models or slow hardware (30 minutes).
 
 ```csharp
@@ -360,6 +371,7 @@ public static OllamaApiClient WithExtendedTimeout(this OllamaApiClient client)
 ```
 
 **Throws:**
+
 - `ArgumentNullException`: If client is null
 
 ### Architecture
