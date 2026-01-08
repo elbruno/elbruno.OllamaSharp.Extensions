@@ -104,11 +104,7 @@ Console.WriteLine($"Current timeout: {timeout}");
 
 ## 🚀 Usage
 
-### C# 14-Ready Features
-
-This library is designed with C# 14 in mind, showcasing modern extension patterns that will evolve with the language.
-
-#### Builder Pattern Extensions (Recommended)
+### Builder Pattern Extensions (Recommended)
 
 ```csharp
 using OllamaSharp;
@@ -162,28 +158,7 @@ var client = new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2")
     .SetTimeout(TimeSpan.FromMinutes(10));
 ```
 
-### C# 14 Extension Members - Future Evolution
-
-This library is designed to embrace C# 14's extension members feature (when fully released). The current implementation uses C# 14-ready patterns that will seamlessly evolve to the new syntax:
-
-#### Current Implementation (C# 14-Ready)
-
-```csharp
-public static class OllamaApiClientExtensions
-{
-    public static OllamaApiClient SetTimeout(this OllamaApiClient client, TimeSpan timeout)
-    {
-        // Implementation using reflection
-        return client;
-    }
-    
-    // Builder patterns for common scenarios
-    public static OllamaApiClient WithStandardTimeout(this OllamaApiClient client)
-        => client.SetTimeout(TimeSpan.FromMinutes(5));
-}
-```
-
-#### Future C# 14 Extension Member Syntax (When Available)
+#### Future C# 14 Extension Member Syntax (Work in Progress)
 
 When C# 14's `extension` keyword becomes fully available, this can be simplified to:
 
@@ -206,13 +181,6 @@ extension(OllamaApiClient client)
 }
 ```
 
-**Benefits of the future syntax:**
-
-- More natural property access: `client.Timeout = TimeSpan.FromMinutes(5);`
-- Cleaner organization of related extension members
-- Better IDE support and discoverability
-- Maintained backward compatibility with existing code
-
 **Reference:** [C# 14 Extension Members Documentation](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#extension-members)
 
 ### With Microsoft Agent Framework
@@ -228,37 +196,12 @@ var ollamaClient = new OllamaApiClient(new Uri("http://localhost:11434/"), "llam
     .SetTimeout(TimeSpan.FromMinutes(5));
 
 // Use with Agent Framework
-IChatClient chatClient = ollamaClient;
-
-var writerAgent = chatClient.CreateAIAgent(
+var writerAgent = ollamaClient.CreateAIAgent(
     name: "Writer",
     instructions: "Write engaging and creative stories.");
 
 var response = await writerAgent.RunAsync("Tell me a story about AI.");
 Console.WriteLine(response.Text);
-```
-
-### Real-World Example: Handling Long Inference Times
-
-```csharp
-using OllamaSharp;
-using OllamaSharpExtensions;
-
-var client = new OllamaApiClient(new Uri("http://localhost:11434"), "llama3.2");
-
-// For slower hardware, set a generous timeout
-client.SetTimeout(TimeSpan.FromMinutes(10));
-
-try
-{
-    var response = await client.GetCompletionAsync("Write a detailed essay about quantum computing.");
-    Console.WriteLine(response);
-}
-catch (TaskCanceledException ex)
-{
-    Console.WriteLine($"Request timed out after {client.GetTimeout()}: {ex.Message}");
-    // Consider increasing the timeout further or optimizing the prompt
-}
 ```
 
 ## 🔧 Implementation Details
@@ -272,213 +215,17 @@ The extension library uses reflection to access the private `HttpClient` instanc
 3. **Minimal Overhead**: Direct property access with no performance impact
 4. **Compatible**: Works with existing OllamaSharp versions (tested with 5.4.12)
 
-### Extension Methods
+## 🧪 Test Applications
 
-#### Core Methods
-
-##### `SetTimeout(TimeSpan timeout)`
-
-Sets the timeout for the OllamaApiClient's underlying HttpClient.
-
-```csharp
-public static OllamaApiClient SetTimeout(this OllamaApiClient client, TimeSpan timeout)
-```
-
-**Parameters:**
-
-- `client`: The OllamaApiClient instance
-- `timeout`: The timeout duration (must be greater than zero)
-
-**Returns:** The same OllamaApiClient instance for method chaining
-
-**Throws:**
-
-- `ArgumentNullException`: If client is null
-- `ArgumentOutOfRangeException`: If timeout is zero or negative
-- `InvalidOperationException`: If unable to access the internal HttpClient
-
-##### `GetTimeout()`
-
-Gets the current timeout setting from the OllamaApiClient.
-
-```csharp
-public static TimeSpan? GetTimeout(this OllamaApiClient client)
-```
-
-**Parameters:**
-
-- `client`: The OllamaApiClient instance
-
-**Returns:** The current timeout duration, or null if unable to access it
-
-**Throws:**
-
-- `ArgumentNullException`: If client is null
-
-##### `ConfigureTimeout(Func<TimeSpan?, TimeSpan> configure)`
-
-Configures the timeout using a functional approach (C# 14-ready pattern).
-
-```csharp
-public static OllamaApiClient ConfigureTimeout(
-    this OllamaApiClient client, 
-    Func<TimeSpan?, TimeSpan> configure)
-```
-
-**Parameters:**
-
-- `client`: The OllamaApiClient instance
-- `configure`: Configuration function that receives the current timeout and returns the new timeout
-
-**Returns:** The same OllamaApiClient instance for method chaining
-
-**Throws:**
-
-- `ArgumentNullException`: If client or configure is null
-
-#### Builder Pattern Methods (C# 14-Ready)
-
-##### `WithQuickTimeout()`
-
-Sets a timeout suitable for quick queries (2 minutes).
-
-```csharp
-public static OllamaApiClient WithQuickTimeout(this OllamaApiClient client)
-```
-
-##### `WithStandardTimeout()`
-
-Sets a timeout suitable for standard prompts (5 minutes).
-
-```csharp
-public static OllamaApiClient WithStandardTimeout(this OllamaApiClient client)
-```
-
-##### `WithLongTimeout()`
-
-Sets a timeout suitable for long-form generation (10 minutes).
-
-```csharp
-public static OllamaApiClient WithLongTimeout(this OllamaApiClient client)
-```
-
-##### `WithExtendedTimeout()`
-
-Sets a timeout suitable for very large models or slow hardware (30 minutes).
-
-```csharp
-public static OllamaApiClient WithExtendedTimeout(this OllamaApiClient client)
-```
-
-**Throws:**
-
-- `ArgumentNullException`: If client is null
-
-### Architecture
-
-```
-OllamaSharpExtensions/
-├── OllamaSharpExtensions/              # Class Library
-│   ├── OllamaApiClientExtensions.cs    # Extension methods
-│   └── OllamaSharpExtensions.csproj    # Project file
-│
-├── OllamaSharpExtensions.TestApp/      # Test Console Application
-│   ├── Program.cs                       # Demo application
-│   └── OllamaSharpExtensions.TestApp.csproj
-│
-└── README.md                            # This file
-```
-
-### Key Features Used
-
-- **.NET 10**: Latest framework features
-- **C# Preview Features**: `LangVersion=preview` for cutting-edge language features
-- **Extension Methods**: Clean API without modifying original library
-- **Reflection**: Safe access to internal HttpClient
-- **Fluent Interface**: Method chaining support
-
-## 🧪 Test Application
-
-The included test application demonstrates all features:
-
-```bash
-cd OllamaSharpExtensions.TestApp
-dotnet run
-```
-
-**Sample Output:**
-
-```
-=== OllamaSharp Extensions Demo ===
-
-Default timeout: 00:01:40
-
-Setting timeout to 5 minutes (300 seconds)...
-New timeout: 00:05:00
-
-Creating an AI Agent using the configured OllamaApiClient...
-Agent created successfully!
-
-Attempting to run agent (requires Ollama running locally)...
-Connection error: Connection refused (localhost:11434)
-Make sure Ollama is running locally on port 11434 with the llama3.2 model.
-
-=== Demo Complete ===
-```
-
-To run with an actual Ollama instance:
-
-1. Install [Ollama](https://ollama.ai/)
-2. Start Ollama: `ollama serve`
-3. Pull a model: `ollama pull llama3.2`
-4. Run the test app: `dotnet run`
-
-## 📖 API Reference
-
-### Namespace: `OllamaSharpExtensions`
-
-#### Class: `OllamaApiClientExtensions`
-
-Static class containing extension methods for `OllamaApiClient`.
-
-**Methods:**
-
-| Method | Description | Returns |
-|--------|-------------|---------|
-| `SetTimeout(TimeSpan)` | Sets the timeout for HTTP requests | `OllamaApiClient` |
-| `GetTimeout()` | Gets the current timeout setting | `TimeSpan?` |
-
-### Error Handling
-
-The extension methods handle the following error cases:
-
-1. **Null Client**: Throws `ArgumentNullException`
-2. **Invalid Timeout**: Throws `ArgumentOutOfRangeException` for zero or negative values
-3. **Reflection Failure**: Throws `InvalidOperationException` if the internal structure has changed
+The included test applicatiosn demonstrates all features of the extension library in a Simple Console Application and also using Microsoft Agent Framework.
 
 ## 🤝 Contributing
 
 Contributions are welcome! This library is part of the [a2aapiredemo](https://github.com/elbruno/a2aapiredemo) repository.
 
-### Development Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/elbruno/a2aapiredemo.git
-cd a2aapiredemo/OllamaSharpExtensions
-
-# Build the library
-cd OllamaSharpExtensions
-dotnet build
-
-# Run tests
-cd ../OllamaSharpExtensions.TestApp
-dotnet run
-```
-
 ## 📄 License
 
-This project is part of the [a2aapiredemo](https://github.com/elbruno/a2aapiredemo) repository and is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
